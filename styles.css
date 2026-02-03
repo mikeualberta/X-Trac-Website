@@ -1330,19 +1330,14 @@ h3 {
   .hero-image img { max-height: 32vh; }
 
   .trust-bar-inner {
-    flex-direction: row;
-    gap: var(--s3);
+    flex-direction: column;
+    gap: var(--s2);
     padding: var(--s3) var(--s2);
   }
   .trust-item strong { font-size: 1.1rem; }
   .trust-item span { font-size: 0.6rem; letter-spacing: 0.06em; }
   .trust-divider { height: 24px; }
   .oem-grid { grid-template-columns: repeat(3, 1fr); }
-
-  .trust-bar-inner {
-    flex-direction: column;
-    gap: var(--s2);
-  }
 
   .product-intro { padding: var(--s7) 0 var(--s5); }
   .product-features { grid-template-columns: 1fr; gap: var(--s4); }
