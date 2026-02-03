@@ -17,9 +17,16 @@
     a.addEventListener('click', function () { links.classList.remove('is-open'); });
   });
 
+  // Hero entrance animation
+  requestAnimationFrame(function () {
+    document.querySelectorAll('.hero-anim').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  });
+
   // Scroll reveal
   var els = document.querySelectorAll(
-    '.app-card, .construct-row, .product-feature, .tread, .oem-grid, .contact-layout, .product-showcase-inner, .product-features, .about-stat, .section-label, h2, .section-intro, .trust-bar-inner'
+    '.app-card, .construct-row, .product-feature, .tread, .oem-grid, .contact-layout, .product-showcase-inner, .product-features, .about-stat, .section-label, h2, .section-intro'
   );
   els.forEach(function (el) { el.classList.add('reveal'); });
 
@@ -75,7 +82,7 @@
     });
   });
 
-  // Form
+  // Form (Formspree)
   var form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -84,17 +91,42 @@
       btn.textContent = 'Sending\u2026';
       btn.disabled = true;
       btn.style.opacity = '0.6';
-      setTimeout(function () {
-        btn.textContent = 'Submitted';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          btn.textContent = 'Submitted';
+          btn.style.opacity = '1';
+          btn.style.background = '#1a7a3a';
+          form.reset();
+          setTimeout(function () {
+            btn.textContent = 'Submit Inquiry';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 2500);
+        } else {
+          btn.textContent = 'Error \u2014 Try Again';
+          btn.style.opacity = '1';
+          btn.style.background = '#7a1a1a';
+          btn.disabled = false;
+          setTimeout(function () {
+            btn.textContent = 'Submit Inquiry';
+            btn.style.background = '';
+          }, 3000);
+        }
+      }).catch(function () {
+        btn.textContent = 'Error \u2014 Try Again';
         btn.style.opacity = '1';
-        btn.style.background = '#1a7a3a';
+        btn.style.background = '#7a1a1a';
+        btn.disabled = false;
         setTimeout(function () {
           btn.textContent = 'Submit Inquiry';
           btn.style.background = '';
-          btn.disabled = false;
-          form.reset();
-        }, 2500);
-      }, 1000);
+        }, 3000);
+      });
     });
   }
 })();
