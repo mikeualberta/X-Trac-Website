@@ -44,7 +44,8 @@
         <a href="#product">Product</a>
         <a href="#manufacturing">Manufacturing</a>
         <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Distribute X-TRAC</a>
+        <a href="#contact" class="nav-cta" data-tab="retailer">Find a Retailer</a>
+        <a href="#contact" class="nav-cta" data-tab="distribute">Distribute X-TRAC</a>
       </div>
     </div>
   </nav>
@@ -58,7 +59,7 @@
         <h1 class="hero-anim" data-delay="1">X-TRAC: Built for<br>the job site</h1>
         <p class="hero-anim" data-delay="2">Jointless steel cable construction. Reinforced edging. Manufactured to OEM specifications for mini excavators, track loaders, and heavy equipment.</p>
         <div class="hero-actions hero-anim" data-delay="3">
-          <a href="#contact" class="btn">Become a Distributor</a>
+          <a href="#contact" class="btn">Contact Us</a>
           <a href="#applications" class="hero-scroll">Explore X-TRAC <span class="hero-scroll-arrow">&darr;</span></a>
         </div>
       </div>
@@ -321,46 +322,96 @@
     </div>
   </section>
 
-  <!-- Distribute X-TRAC -->
+  <!-- Contact -->
   <section class="section section--dark" id="contact">
     <div class="container">
-      <div class="contact-layout">
-        <div class="contact-text">
-          <div class="section-label">Distribute X-TRAC</div>
-          <h2>Partner with us.</h2>
-          <p>OEM quality at aftermarket pricing. Reliable year-round supply from a consistent manufacturing partner. Hundreds of SKUs covering every major brand and piece of equipment.</p>
-          <ul class="contact-points">
-            <li>Competitive dealer pricing model</li>
-            <li>Marketing and product support</li>
-            <li>Custom track sizes available</li>
-          </ul>
+      <div class="contact-tabs">
+        <button class="contact-tab contact-tab--active" data-tab="retailer">Find a Retailer</button>
+        <button class="contact-tab" data-tab="distribute">Distribute X-TRAC</button>
+      </div>
+
+      <!-- Distribute Panel -->
+      <div class="contact-panel contact-panel--hidden" id="panel-distribute">
+        <div class="contact-layout">
+          <div class="contact-text">
+            <div class="section-label">Distribute X-TRAC</div>
+            <h2>Partner with us.</h2>
+            <p>OEM quality at aftermarket pricing. Reliable year-round supply from a consistent manufacturing partner. Hundreds of SKUs covering every major brand and piece of equipment.</p>
+            <ul class="contact-points">
+              <li>Competitive dealer pricing model</li>
+              <li>Marketing and product support</li>
+              <li>Custom track sizes available</li>
+            </ul>
+          </div>
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xlglkoar" method="POST">
+            <input type="hidden" name="_subject" value="New X-TRAC Distributor Inquiry">
+            <div class="form-field">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-field">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" required>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn--full">Submit Inquiry</button>
+          </form>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xlglkoar" method="POST">
-          <input type="hidden" name="_subject" value="New X-TRAC Distributor Inquiry">
-          <div class="form-field">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
+      </div>
+
+      <!-- Retailer Panel -->
+      <div class="contact-panel" id="panel-retailer">
+        <div class="contact-layout">
+          <div class="contact-text">
+            <div class="section-label">Find a Retailer</div>
+            <h2>Purchase X-TRAC near you.</h2>
+            <p>Looking for X-TRAC tracks for your equipment? Fill out the form and we'll connect you with a certified retailer in your area carrying the right tracks for your machine.</p>
+            <ul class="contact-points">
+              <li>Tell us your equipment make and model</li>
+              <li>We'll match you with a local dealer</li>
+              <li>Fast turnaround on availability</li>
+            </ul>
           </div>
-          <div class="form-field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" required>
-          </div>
-          <div class="form-row">
+          <form class="contact-form" id="retailerForm" action="https://formspree.io/f/xlglkoar" method="POST">
+            <input type="hidden" name="_subject" value="New X-TRAC Retailer Inquiry">
             <div class="form-field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+              <label for="r-name">Full Name</label>
+              <input type="text" id="r-name" name="name" required>
             </div>
             <div class="form-field">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone">
+              <label for="r-company">Company</label>
+              <input type="text" id="r-company" name="company">
             </div>
-          </div>
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn--full">Submit Inquiry</button>
-        </form>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="r-email">Email</label>
+                <input type="email" id="r-email" name="email" required>
+              </div>
+              <div class="form-field">
+                <label for="r-phone">Phone</label>
+                <input type="tel" id="r-phone" name="phone">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="r-message">Equipment &amp; Location</label>
+              <textarea id="r-message" name="message" rows="4" placeholder="e.g. Kubota SVL75-2, located in Calgary, AB"></textarea>
+            </div>
+            <button type="submit" class="btn btn--full">Submit Inquiry</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>

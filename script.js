@@ -82,9 +82,33 @@
     });
   });
 
+  // Contact tab switching
+  function switchTab(tabName) {
+    document.querySelectorAll('.contact-tab').forEach(function (btn) {
+      btn.classList.toggle('contact-tab--active', btn.getAttribute('data-tab') === tabName);
+    });
+    document.querySelectorAll('.contact-panel').forEach(function (panel) {
+      panel.classList.toggle('contact-panel--hidden', panel.id !== 'panel-' + tabName);
+    });
+  }
+
+  document.querySelectorAll('.contact-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      switchTab(btn.getAttribute('data-tab'));
+    });
+  });
+
+  // Nav links with data-tab
+  document.querySelectorAll('a[data-tab]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      switchTab(a.getAttribute('data-tab'));
+    });
+  });
+
   // Form (Formspree)
-  var form = document.getElementById('contactForm');
-  if (form) {
+  function bindForm(formId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('button');
@@ -129,4 +153,7 @@
       });
     });
   }
+
+  bindForm('contactForm');
+  bindForm('retailerForm');
 })();
